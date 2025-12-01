@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Personal Details — Godinez</title>
+
+  <style>
+    :root{
+      --bg: hsl(271,48%,57%);
+      --bg2: hsl(271,48%,46%);
+      --glass: rgba(255,255,255,0.12);
+      --glass-border: rgba(255,255,255,0.22);
+      --muted: rgba(255,255,255,0.85);
+      --accent: #c5b41a;
+      --radius: 18px;
+      --text: #fff;
+    }
+
+    /* Light Mode Theme */
+    .light {
+      --bg: #f2f2f4;
+      --bg2: #dadce0;
+      --glass: rgba(0,0,0,0.05);
+      --glass-border: rgba(0,0,0,0.15);
+      --muted: #333;
+      --text: #111;
+    }
+
+    *{margin:0;padding:0;box-sizing:border-box}
+
+    body{
+      font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+      background:linear-gradient(160deg,var(--bg),var(--bg2));
+      padding:2rem;
+      color:var(--text);
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      min-height:100vh;
+      transition:.35s ease;
+    }
+
+    .card{
+      width:min(820px,95%);
+      padding:2.2rem;
+      border-radius:var(--radius);
+      background:var(--glass);
+      border:1px solid var(--glass-border);
+      backdrop-filter:blur(18px);
+      -webkit-backdrop-filter:blur(18px);
+      box-shadow:0 12px 38px rgba(0,0,0,0.28);
+      animation:fadeIn .7s ease forwards;
+      transition:.35s ease;
+    }
+
+    @keyframes fadeIn{
+      from{opacity:0; transform:translateY(15px);}
+      to{opacity:1; transform:translateY(0);}
+    }
+
+    header{
+      text-align:center;
+      margin-bottom:1.8rem;
+    }
+
+    header h1{
+      font-size:1.9rem;
+      letter-spacing:0.8px;
+      text-transform:uppercase;
+      font-weight:700;
+    }
+
+    header p{
+      margin-top:4px;
+      color:var(--muted);
+      font-size:1rem;
+    }
+
+    section{
+      margin-bottom:2rem;
+    }
+
+    section h2{
+      font-size:1.3rem;
+      margin-bottom:0.8rem;
+      font-weight:600;
+      color:var(--text);
+      letter-spacing:0.3px;
+    }
+
+    .info-grid{
+      display:grid;
+      gap:14px;
+      grid-template-columns:1fr 1fr;
+    }
+
+    @media(max-width:600px){
+      .info-grid{ grid-template-columns:1fr; }
+    }
+
+    .info-box{
+      background:rgba(255,255,255,0.10);
+      border:1px solid rgba(255,255,255,0.15);
+      border-radius:12px;
+      padding:14px 16px;
+      box-shadow:0 6px 18px rgba(0,0,0,0.25);
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      font-size:1rem;
+      transition:0.22s ease;
+    }
+
+    .light .info-box{
+      background:rgba(0,0,0,0.06);
+      border:1px solid rgba(0,0,0,0.15);
+      color:#111;
+    }
+
+    .info-box:hover{
+      transform:translateY(-3px);
+      background:rgba(255,255,255,0.16);
+    }
+
+    .label{font-weight:600;}
+    .value{color:var(--muted); text-align:right;}
+
+    /* TAG STYLES */
+    .tag-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .tag {
+      background: rgba(255,255,255,0.14);
+      border: 1px solid rgba(255,255,255,0.22);
+      padding: 10px 18px;
+      border-radius: 10px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text);
+      display: inline-flex;
+      transition: 0.25s ease;
+    }
+
+    .tag:hover {
+      transform: translateY(-3px);
+      background: rgba(255,255,255,0.22);
+    }
+
+    .tag.dark {
+      background: #0005;
+      border: 1px solid #ffffff20;
+    }
+
+    .light .tag.dark {
+      background: rgba(0,0,0,0.10);
+      border: 1px solid rgba(0,0,0,0.20);
+      color: #111;
+    }
+
+    .actions{
+      display:flex;
+      justify-content:center;
+      gap:12px;
+      margin-top:1.4rem;
+    }
+
+    .btn{
+      background:var(--accent);
+      padding:0.7rem 1.4rem;
+      border-radius:999px;
+      color:#012;
+      font-weight:700;
+      text-decoration:none;
+      display:inline-block;
+      transition:0.2s ease;
+      box-shadow:0 10px 24px rgba(0,0,0,0.25);
+    }
+
+    .btn:hover{
+      transform:translateY(-3px) scale(1.03);
+    }
+
+    /* Toggle Button */
+    #themeToggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: var(--accent);
+      color: #111;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 30px;
+      cursor: pointer;
+      font-weight: 700;
+      transition: 0.3s ease;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    }
+
+    #themeToggle:hover {
+      transform: scale(1.05);
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <button id="themeToggle">🌙 Dark Mode</button>
+
+  <main class="card">
+    <header>
+      <h1>Personal Details</h1>
+      <p>Information, core skills, and technical background</p>
+    </header>
+
+    <section>
+      <h2>Personal Information</h2>
+
+      <div class="info-grid">
+        <div class="info-box"><span class="label">Address:</span> <span class="value">Mactan, Lapu-Lapu City</span></div>
+        <div class="info-box"><span class="label">Mobile:</span> <span class="value">09458824726</span></div>
+        <div class="info-box"><span class="label">Gender:</span> <span class="value">Male</span></div>
+        <div class="info-box"><span class="label">Age:</span> <span class="value">21</span></div>
+        <div class="info-box"><span class="label">Birthdate:</span> <span class="value">June 03, 2004</span></div>
+        <div class="info-box"><span class="label">Height:</span> <span class="value">5'4</span></div>
+        <div class="info-box"><span class="label">Civil Status:</span> <span class="value">Single</span></div>
+        <div class="info-box"><span class="label">Citizenship:</span> <span class="value">Filipino</span></div>
+        <div class="info-box"><span class="label">Religion:</span> <span class="value">Catholic</span></div>
+        <div class="info-box"><span class="label">Languages:</span> <span class="value">Cebuano, English, Tagalog</span></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Core Skills</h2>
+      <div class="tag-container">
+        <div class="tag">Object-Oriented Programming (OOP)</div>
+        <div class="tag">Data Structures</div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Explored Languages</h2>
+      <div class="tag-container">
+        <div class="tag dark">JavaScript</div>
+        <div class="tag dark">Python</div>
+        <div class="tag dark">PHP</div>
+        <div class="tag dark">C Language</div>
+        <div class="tag dark">Java</div>
+        <div class="tag dark">HTML</div>
+        <div class="tag dark">CSS</div>
+        <div class="tag dark">C#</div>
+      </div>
+    </section>
+
+    <div class="actions">
+      <a class="btn" href="test.html">Back</a>
+      <a class="btn" href="projects.html">Projects</a>
+    </div>
+
+  </main>
+
+<script>
+const toggleBtn = document.getElementById("themeToggle");
+
+// Load saved preference
+if (localStorage.getItem("theme") === "light") {
+  document.body.classList.add("light");
+  toggleBtn.textContent = "🌙 Dark Mode";
+}
+
+toggleBtn.addEventListener("click", () => {
+  document.body.classList.toggle("light");
+
+  if (document.body.classList.contains("light")) {
+    toggleBtn.textContent = "🌙 Dark Mode";
+    localStorage.setItem("theme", "light");
+  } else {
+    toggleBtn.textContent = "☀️ Light Mode";
+    localStorage.setItem("theme", "dark");
+  }
+});
+</script>
+
+</body>
+</html>

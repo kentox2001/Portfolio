@@ -1,0 +1,208 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projects — Godinez</title>
+
+  <style>
+    :root {
+      --bg: hsl(271,48%,57%);
+      --glass: rgba(255,255,255,0.12);
+      --glass-border: rgba(255,255,255,0.22);
+      --muted: rgba(255,255,255,0.85);
+      --accent: #c5b41a;
+      --radius: 18px;
+      --text: #fff;
+    }
+
+    body.light {
+      --bg: #f3f3f3;
+      --glass: rgba(0,0,0,0.06);
+      --glass-border: rgba(0,0,0,0.15);
+      --muted: #333;
+      --text: #111;
+      --accent: #8c7d00;
+      background: linear-gradient(160deg, #ffffff, #e4e4e4);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: "Poppins", Arial, sans-serif;
+      background: linear-gradient(160deg, var(--bg), hsl(271,48%,46%));
+      color: var(--text);
+      padding: 2rem;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      transition: background .4s ease, color .4s ease;
+    }
+
+    .container {
+      width: min(1100px, 95%);
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 2.2rem;
+    }
+
+    header h1 {
+      font-size: 2rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    header p {
+      color: var(--muted);
+      font-size: 1rem;
+      margin-top: 5px;
+    }
+
+    #modeToggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      padding: 0.6rem 1.4rem;
+      background: var(--glass);
+      border: 1px solid var(--glass-border);
+      border-radius: 50px;
+      font-weight: 600;
+      cursor: pointer;
+      color: var(--text);
+      backdrop-filter: blur(12px);
+      transition: .3s ease;
+    }
+
+    #modeToggle:hover {
+      transform: scale(1.08);
+      background: rgba(255,255,255,0.18);
+    }
+
+    /* GRID */
+    .project-grid {
+      display: flex;
+      justify-content: center;
+      padding-top: 1rem;
+    }
+
+    /* SLIGHTLY BIGGER CARD */
+    .project-card {
+      background: var(--glass);
+      border: 1px solid var(--glass-border);
+      backdrop-filter: blur(14px);
+
+      padding: 1.6rem;
+      border-radius: 20px;
+      width: 420px;
+
+      box-shadow: 0 10px 26px rgba(0,0,0,0.28);
+      transition: 0.3s ease;
+      text-align: left;
+    }
+
+    .project-card:hover {
+      transform: translateY(-6px);
+      background: rgba(255,255,255,0.18);
+    }
+
+    .project-card h2 {
+      font-size: 1.35rem;
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+
+    /* IMPROVED DESCRIPTION FONT */
+    .project-card p {
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.55;
+      margin-bottom: 12px;
+      letter-spacing: 0.2px;
+    }
+
+    .actions {
+      text-align: center;
+      margin-top: 2.5rem;
+    }
+
+    .btn {
+      background: var(--accent);
+      padding: 0.7rem 1.4rem;
+      border-radius: 999px;
+      color: #012;
+      font-weight: 700;
+      text-decoration: none;
+      box-shadow: 0 10px 22px rgba(0,0,0,0.25);
+      transition: 0.25s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px) scale(1.03);
+    }
+  </style>
+</head>
+
+<body>
+
+  <button id="modeToggle">☀️ Light Mode</button>
+
+  <div class="container">
+
+    <header>
+      <h1>My Projects</h1>
+      <p>A showcase of the work I’ve built and contributed to.</p>
+    </header>
+
+    <div class="project-grid">
+
+      <div class="project-card">
+        <h2>Parking Management System</h2>
+        <p>
+          A Java-based parking system designed to track vehicle entries and exits,  
+          assign parking spots automatically, compute parking fees, and display  
+          real-time parking availability. The system ensures efficient and  
+          organized parking management for small to medium facilities.
+        </p>
+
+        <a href="https://github.com/kentox2001/java-file" target="_blank" 
+           style="color: var(--accent); font-weight: 600; text-decoration: underline;">
+          View on GitHub
+        </a>
+      </div>
+
+    </div>
+
+    <div class="actions">
+      <a href="test.html" class="btn">Back</a>
+    </div>
+
+  </div>
+
+  <script>
+    const toggleBtn = document.getElementById("modeToggle");
+
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme === "light") {
+      document.body.classList.add("light");
+      toggleBtn.textContent = "🌙 Dark Mode";
+    } else {
+      toggleBtn.textContent = "☀️ Light Mode";
+    }
+
+    toggleBtn.addEventListener("click", () => {
+      document.body.classList.toggle("light");
+
+      if (document.body.classList.contains("light")) {
+        toggleBtn.textContent = "🌙 Dark Mode";
+        localStorage.setItem("theme", "light");
+      } else {
+        toggleBtn.textContent = "☀️ Light Mode";
+        localStorage.setItem("theme", "dark");
+      }
+    });
+  </script>
+
+</body>
+</html>
